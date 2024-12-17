@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Header from './components/Header/Header';
 import NewProduct from './components/Products/NewProduct';
 import ProductList from './components/Products/ProductList';
@@ -23,7 +22,7 @@ function App() {
     fetchProducts();
   }, []);
 
-  const addProductHandler = async (productName, productPrice) => {
+  const handleAddProduct = async (productName, productPrice) => {
     try {
       const newProduct = {
         title: productName,
@@ -63,7 +62,7 @@ function App() {
     <React.Fragment>
       <Header />
       <main>
-        <NewProduct onAddProduct={addProductHandler} />
+        <NewProduct onAddProduct={handleAddProduct} />
         {isLoading && <p className="loader">Loading...</p>}
         {!isLoading && <ProductList items={loadedProducts} />}
       </main>
