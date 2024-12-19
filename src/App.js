@@ -11,12 +11,10 @@ const App = () => {
   ];
 
   return (
-      <>
-        <div className="course-goals">
-            <h2>Course Goals</h2>
-            <GoalList goals={courseGoals} />
-        </div>
-      </>
+    <div className="course-goals">
+        <h2>Course Goals</h2>
+        <GoalList goals={courseGoals} />
+    </div>
   );
 };
 
