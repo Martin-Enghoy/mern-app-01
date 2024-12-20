@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const GoalList = ({goals}) => {
-    console.log(goals)
     return (
         <ul className="goal-list">
             {goals.map(goal => (
@@ -13,7 +12,7 @@ const GoalList = ({goals}) => {
 };
 
 GoalList.propTypes = {
-    goals: PropTypes.object,
+    goals: PropTypes.array,
 }
 
 export default GoalList;
