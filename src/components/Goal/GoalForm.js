@@ -27,8 +27,8 @@ const GoalForm = ({ onAddGoal }) => {
 
   return (
     <form action="" className="new-goal" onSubmit={handleAddGoal}>
-      <input type="text" value={inputGoal} onChange={handleTextChange}  />
-      <button type="submit">Add Goal</button>
+      <input type="text" value={inputGoal} onChange={handleTextChange} className='rounded-xl' />
+      <button type="submit" className='px-4 hover:text-neutral-900/80'>Add Goal</button>
     </form>
   )
 };
