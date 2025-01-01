@@ -1,28 +1,19 @@
-import React, {useState} from 'react';
-import GoalList from './components/GoalList/GoalList';
-import GoalForm from './components/Goal/GoalForm';
+import React from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
-import './App.css';
-
-const courseGoals = [
-  { id: 'cg1', text: 'Finish the Course' },
-  { id: 'cg2', text: 'Learn all about the Course Main Topic' },
-  { id: 'cg3', text: 'Help other students in the Course Q&A' },
-];
+import Users from './mods/user/pages/Users'
 
 const App = () => {
-  const [currentGoals, setCurrentGoals] = useState(courseGoals);
-
-  const handleAddNewGoal = (newGoal) => {
-    setCurrentGoals((goals) => [...goals, newGoal]);
-  };
 
   return (
-    <div className="course-goals">
-      <h2>Course Goals</h2>
-      <GoalForm onAddGoal={handleAddNewGoal} />
-      <GoalList goals={currentGoals} />
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/' exact>
+          <Users />
+        </Route>
+        <Redirect to='/' />
+      </Switch>
+    </Router>
   );
 };
 
