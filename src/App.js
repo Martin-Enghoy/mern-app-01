@@ -14,7 +14,7 @@ const App = () => {
   const [currentGoals, setCurrentGoals] = useState(courseGoals);
 
   const handleAddNewGoal = (newGoal) => {
-    setCurrentGoals([...currentGoals, newGoal]);
+    setCurrentGoals((goals) => [...goals, newGoal]);
   };
 
   return (
