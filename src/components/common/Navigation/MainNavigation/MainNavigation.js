@@ -17,13 +17,11 @@ const MainNavigation = props => {
   return (
     <>
       {isDrawerOpen && <Backdrop onClick={handleDrawerVisibility} />}
-      {isDrawerOpen && (
-        <SideDrawer>
-          <nav className="main-navigation__drawer-nav">
-            <NavLinks/>
-          </nav>
-        </SideDrawer>
-      )}
+      <SideDrawer show={isDrawerOpen} onClick={handleDrawerVisibility}>
+        <nav className="main-navigation__drawer-nav">
+          <NavLinks/>
+        </nav>
+      </SideDrawer>
       <MainHeader>
         <button className="main-navigation__menu-btn" onClick={handleDrawerVisibility}>
           <span />
