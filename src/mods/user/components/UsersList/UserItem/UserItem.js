@@ -1,7 +1,7 @@
 import React from 'react';
-import Avatar from "../../common/Avatar/Avatar";
 import {Link} from "react-router-dom";
-import Card from "../../common/Card/Card";
+import Card from "../../../../../components/Card/Card";
+import Avatar from "../../../../../components/Avatar/Avatar";
 import './UserItem.css'
 
 const UserItem = props => {

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-d
 
 import Users from './mods/user/pages/Users'
 import NewPlace from "./mods/places/pages/NewPlace";
-import MainNavigation from "./components/common/Navigation/MainNavigation/MainNavigation";
+import MainNavigation from "./components/Navigation/MainNavigation/MainNavigation";
 
 const App = () => {
 
