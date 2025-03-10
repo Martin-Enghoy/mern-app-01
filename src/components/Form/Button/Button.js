@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Button.css';
 
-const Button = props => {
+export  const Button = props => {
   if (props.href) {
     return (
       <a
@@ -39,5 +39,3 @@ const Button = props => {
     </button>
   );
 };
-
-export default Button;
