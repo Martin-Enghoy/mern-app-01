@@ -22,7 +22,11 @@ const inputReducer = (state, action) => {
 
 export const Input = props => {
   const [inputState, dispatch]
-    = useReducer(inputReducer, { value: '', isValid: false });
+    = useReducer(inputReducer, {
+      value: props.value || '',
+      isTouched: false,
+      isValid: props.isValid || false,
+    });
 
   const { id, onInput } = props;
   const { value, isValid } = inputState;
@@ -56,6 +60,7 @@ export const Input = props => {
       id={props.id}
       rows={props.rows || 3}
       onChange={handleOnChange}
+      onBlur={handleTouch}
       value={inputState.value}
     />
   );

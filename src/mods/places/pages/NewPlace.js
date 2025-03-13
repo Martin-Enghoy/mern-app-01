@@ -3,7 +3,7 @@ import {Input} from "../../../components/Form/Input/Input";
 import {VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from "../../../util/validators";
 import {Button} from "../../../components/Form/Button/Button";
 
-import './NewPlace.css';
+import './PlaceForm.css';
 
 const formReducer = (state, action) => {
   if (action.type === 'input_change') {
@@ -42,6 +42,10 @@ const NewPlace = () => {
         isValid: false,
       },
       description: {
+        value: '',
+        isValid: false,
+      },
+      address: {
         value: '',
         isValid: false,
       },

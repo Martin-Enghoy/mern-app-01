@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import {Input} from "../../../components/Form/Input/Input";
-import {VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from "../../../util/validators";
 import {Button} from "../../../components/Form/Button/Button";
+import {VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from "../../../util/validators";
+import './PlaceForm.css';
 
 const placesData = [
   {
@@ -47,7 +48,7 @@ export const UpdatePlace = props => {
   }
 
   return (
-    <form>
+    <form className="place-form">
       <Input
         id="title"
         element="input"
@@ -55,7 +56,7 @@ export const UpdatePlace = props => {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a title."
-        onInput={}
+        onInput={() => {}}
         value={matchingPlace.title}
         valid={true}
       />
@@ -64,8 +65,8 @@ export const UpdatePlace = props => {
         element="textarea"
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}
-        errorText="Please enter a valid description."
-        onInput={}
+        errorText="Please enter at least 5 characters."
+        onInput={() => {}}
         value={matchingPlace.description}
         valid={true}
       />
