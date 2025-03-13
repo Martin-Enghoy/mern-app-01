@@ -5,6 +5,7 @@ import Users from './mods/user/pages/Users'
 import NewPlace from "./mods/places/pages/NewPlace";
 import MainNavigation from "./components/Navigation/MainNavigation/MainNavigation";
 import UserPlaces from "./mods/places/pages/UserPlaces";
+import {UpdatePlace} from "./mods/places/pages/UpdatePlace";
 
 const App = () => {
 
@@ -21,6 +22,9 @@ const App = () => {
           </Route>
           <Route path="/places/new" exact>
             <NewPlace />
+          </Route>
+          <Route path="/places/:placeId">
+            <UpdatePlace />
           </Route>
           <Redirect to="/" />
         </Switch>

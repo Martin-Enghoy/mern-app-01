@@ -53,8 +53,14 @@ const NewPlace = () => {
     dispatch({ type: 'input_change', inputId: id, value, isValid });
   }, []);
 
+  const handleSubmitPlace = event => {
+    event.preventDefault();
+
+    console.log(formState.inputs);
+  };
+
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={handleSubmitPlace}>
       <Input
         id="title"
         element="input"
@@ -71,6 +77,15 @@ const NewPlace = () => {
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter at least 5 characters."
+        onChange={() => {}}
+        onInput={handleInput}
+      />
+      <Input
+        id="address"
+        element="input"
+        label="Address"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter an address."
         onChange={() => {}}
         onInput={handleInput}
       />
