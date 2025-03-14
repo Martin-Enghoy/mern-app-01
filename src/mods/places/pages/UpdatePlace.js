@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import {Input} from "../../../components/Form/Input/Input";
 import {Button} from "../../../components/Form/Button/Button";
@@ -38,25 +38,48 @@ export const UpdatePlace = props => {
   const urlParams = useParams();
   const { placeId } = urlParams;
 
-  const matchingPlace = placesData.find(place => place.id === placeId);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [formState, handleInput] = useForm({
+  const [formState, handleInput, setFormData] = useForm({
     inputs: {
       title: {
-        value: matchingPlace.title || '',
-        isValid: true,
+        value: '',
+        isValid: false,
       },
       description: {
-        value: matchingPlace.description || '',
-        isValid: true,
+        value: '',
+        isValid: false,
       },
       address: {
-        value: matchingPlace.address || '',
-        isValid: true,
+        value: '',
+        isValid: false,
       },
     },
-    isValid: true,
+    isValid: false,
   });
+
+  const matchingPlace = placesData.find(place => place.id === placeId);
+
+  useEffect(() => {
+    setFormData({
+      inputs: {
+        title: {
+          value: matchingPlace.title,
+          isValid: true,
+        },
+        description: {
+          value: matchingPlace.description,
+          isValid: true,
+        },
+        address: {
+          value: matchingPlace.address,
+          isValid: true,
+        },
+      },
+      isValid: true,
+    });
+    setIsLoading(false);
+  }, [setFormData, matchingPlace]);
 
   const handleUpdatePlace = event => {
     event.preventDefault();
@@ -68,6 +91,14 @@ export const UpdatePlace = props => {
     return (
       <div className="center">
         <h2>No such place was found.</h2>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="center">
+        <h2>Loading...</h2>
       </div>
     );
   }
