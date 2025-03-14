@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Card from "../../../components/Card/Card";
-import {Button} from "../../../components/Form/Button/Button";
-import {Modal} from "../../../components/Modal/Modal";
-import {MapRender} from "../../../components/Map/Map";
+import Card from "../../../../components/Card/Card";
+import {Button} from "../../../../components/Form/Button/Button";
+import {Modal} from "../../../../components/Modal/Modal";
+import {MapRender} from "../../../../components/Map/Map";
 import './PlaceItem.css';
 
 export const PlaceItem = props => {

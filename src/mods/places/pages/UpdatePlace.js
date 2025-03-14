@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import {Input} from "../../../components/Form/Input/Input";
 import {Button} from "../../../components/Form/Button/Button";
 import {VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from "../../../util/validators";
+import { useForm } from "../../../hooks/form-hook";
 import './PlaceForm.css';
 
 const placesData = [
@@ -39,6 +40,30 @@ export const UpdatePlace = props => {
 
   const matchingPlace = placesData.find(place => place.id === placeId);
 
+  const [formState, handleInput] = useForm({
+    inputs: {
+      title: {
+        value: matchingPlace.title || '',
+        isValid: true,
+      },
+      description: {
+        value: matchingPlace.description || '',
+        isValid: true,
+      },
+      address: {
+        value: matchingPlace.address || '',
+        isValid: true,
+      },
+    },
+    isValid: true,
+  });
+
+  const handleUpdatePlace = event => {
+    event.preventDefault();
+
+    console.log(formState.inputs);
+  };
+
   if (!matchingPlace) {
     return (
       <div className="center">
@@ -48,7 +73,7 @@ export const UpdatePlace = props => {
   }
 
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={handleUpdatePlace}>
       <Input
         id="title"
         element="input"
@@ -56,9 +81,9 @@ export const UpdatePlace = props => {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a title."
-        onInput={() => {}}
-        value={matchingPlace.title}
-        valid={true}
+        onInput={handleInput}
+        value={formState.inputs.title.value}
+        isValid={formState.inputs.title.isValid}
       />
       <Input
         id="description"
@@ -66,11 +91,22 @@ export const UpdatePlace = props => {
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter at least 5 characters."
-        onInput={() => {}}
-        value={matchingPlace.description}
-        valid={true}
+        onInput={handleInput}
+        value={formState.inputs.description.value}
+        isValid={formState.inputs.description.isValid}
       />
-      <Button type="submit" disabled={true}>
+      <Input
+        id="address"
+        element="input"
+        label="Address"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter an address."
+        onChange={() => {}}
+        onInput={handleInput}
+        value={formState.inputs.address.value}
+        isValid={formState.inputs.address.isValid}
+      />
+      <Button type="submit" disabled={!formState.isValid}>
         Update Place
       </Button>
     </form>

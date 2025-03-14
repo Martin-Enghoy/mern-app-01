@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Card from "../../../components/Card/Card";
+import Card from "../../../../components/Card/Card";
 import {PlaceItem} from "../PlaceItem/PlaceItem";
 import './PlaceList.css';
 
