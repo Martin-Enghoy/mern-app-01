@@ -8,10 +8,19 @@ import './PlaceItem.css';
 
 export const PlaceItem = props => {
   const [showMap, setShowMap] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const handleShowMap = () => {
     setShowMap(!showMap);
   };
+
+  const handleShowConfirmModal = () => {
+    setShowConfirmModal(!showConfirmModal);
+  };
+
+  const handleDelete = () => {
+    console.log(`Deleting ${props.title}...`);
+  }
 
   return (
     <>
@@ -27,6 +36,20 @@ export const PlaceItem = props => {
           <MapRender center={props.coordinates} zoom={16} />
         </div>
       </Modal>
+      <Modal
+        show={showConfirmModal}
+        onCancel={handleShowConfirmModal}
+        header="Delete Place"
+        footerClass="place-item__modal-actions"
+        footer={
+          <>
+            <Button inverse onClick={handleShowConfirmModal}>Cancel</Button>
+            <Button danger onClick={handleDelete}>Delete</Button>
+          </>
+        }
+      >
+        <p>Confirm delete: <b>{props.title}</b>?</p>
+      </Modal>
       <li className="place-item">
         <Card className="place-item__content">
           <div className="place-item__image">
@@ -40,7 +63,7 @@ export const PlaceItem = props => {
           <div className="place-item__actions">
             <Button onClick={handleShowMap}>View on Map</Button>
             <Button inverse to={`/places/${props.id}`}>Edit</Button>
-            <Button danger>Delete</Button>
+            <Button danger onClick={handleShowConfirmModal}>Delete</Button>
           </div>
         </Card>
       </li>
