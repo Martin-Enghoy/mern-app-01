@@ -4,6 +4,7 @@ import {Input} from "../../../components/Form/Input/Input";
 import {Button} from "../../../components/Form/Button/Button";
 import {VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from "../../../util/validators";
 import { useForm } from "../../../hooks/form-hook";
+import Card from "../../../components/Card/Card";
 import './PlaceForm.css';
 
 const placesData = [
@@ -21,7 +22,7 @@ const placesData = [
   },
   {
     id: 'p2',
-    title: 'Empire State Building',
+    title: 'Empire State Building 2',
     description: 'One of the most famous sky scrapers in the world!',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg',
     address: '20 W 34th St, New York, NY 10001',
@@ -61,23 +62,25 @@ export const UpdatePlace = props => {
   const matchingPlace = placesData.find(place => place.id === placeId);
 
   useEffect(() => {
-    setFormData({
-      inputs: {
-        title: {
-          value: matchingPlace.title,
-          isValid: true,
+    if (matchingPlace) {
+      setFormData({
+        inputs: {
+          title: {
+            value: matchingPlace.title,
+            isValid: true,
+          },
+          description: {
+            value: matchingPlace.description,
+            isValid: true,
+          },
+          address: {
+            value: matchingPlace.address,
+            isValid: true,
+          },
         },
-        description: {
-          value: matchingPlace.description,
-          isValid: true,
-        },
-        address: {
-          value: matchingPlace.address,
-          isValid: true,
-        },
-      },
-      isValid: true,
-    });
+        isValid: true,
+      });
+    }
     setIsLoading(false);
   }, [setFormData, matchingPlace]);
 
@@ -90,7 +93,9 @@ export const UpdatePlace = props => {
   if (!matchingPlace) {
     return (
       <div className="center">
-        <h2>No such place was found.</h2>
+        <Card>
+          <h2>No such place was found.</h2>
+        </Card>
       </div>
     );
   }
