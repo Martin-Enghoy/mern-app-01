@@ -6,6 +6,7 @@ import NewPlace from "./mods/places/pages/NewPlace";
 import MainNavigation from "./components/Navigation/MainNavigation/MainNavigation";
 import UserPlaces from "./mods/places/pages/UserPlaces";
 import {UpdatePlace} from "./mods/places/pages/UpdatePlace";
+import {AuthPage} from "./mods/auth/pages/AuthPage";
 
 const App = () => {
 
@@ -16,6 +17,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact>
             <Users />
+          </Route>
+          <Route path="/auth" exact>
+            <AuthPage />
           </Route>
           <Route path="/:userId/places" exact>
             <UserPlaces />
