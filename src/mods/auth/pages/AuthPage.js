@@ -10,7 +10,9 @@ export const AuthPage = () => {
 
   return (
     <div>
-      <AuthForm onSubmit={handleLogin} />
+      <AuthForm
+        onSubmit={handleLogin}
+      />
     </div>
   );
 };

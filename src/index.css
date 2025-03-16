@@ -40,3 +40,37 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.mx-4 {
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.gap-2 {
+  gap: 0.4rem;
+}
+
+.gap-4 {
+  gap: 1.6rem;
+}
+
+.link-text {
+  font-weight: 600;
+  color: #ff0055;
+}
+
+.hover\:link-text:hover {
+  color: #FF3377;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
